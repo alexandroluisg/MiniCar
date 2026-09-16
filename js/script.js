@@ -16,10 +16,7 @@ class Carro {
     acelerar(cantidad) {
         if (this.encendido === true) {
             this.velocidad = this.velocidad + cantidad;
-            this.posicion = this.posicion + cantidad;
-            carroVisual.style.left = miCarro.posicion + "px";
             console.log("Velocidad:", this.velocidad);
-            console.log("Posición:", this.posicion);
         } else {
             console.log("El carro esta apagado, no puede acelerar");
         }
@@ -28,6 +25,9 @@ class Carro {
     frenar(cantidad) {
         if (this.velocidad > 0) {
             this.velocidad = this.velocidad - cantidad;
+        if(this.velocidad < 0) {
+            this.velocidad = 0;
+        }
             console.log("Velocidad:", this.velocidad);
         } else {
             console.log("El carro esta detenido");
@@ -76,7 +76,6 @@ const botonFrenar = document.getElementById("btnFrenar");
 botonFrenar.addEventListener("click", () => {
     miCarro.frenar(20);
     velocidad.textContent = miCarro.velocidad;
-    carroVisual.style.left = miCarro.velocidad + "px";
 })
 
 const botonApagar = document.getElementById("btnApagar");

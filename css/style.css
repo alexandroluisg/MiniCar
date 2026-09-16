@@ -33,7 +33,7 @@
     position:absolute;
     left: 0px;
     top: 70px;
-    transition:left 0.5s;
+    transition: left 0.1s linear;
 }
 
 #panel {
