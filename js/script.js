@@ -15,7 +15,7 @@ class Carro {
 
     acelerar(cantidad) {
         if (this.encendido === true) {
-            this.velocidad = this.velocidad + cantidad;
+            this.velocidad = Math.min(this.velocidad + cantidad, 120);
             console.log("Velocidad:", this.velocidad);
         } else {
             console.log("El carro esta apagado, no puede acelerar");
@@ -35,8 +35,14 @@ class Carro {
     }
 
     mover() {
-    if (this.posicion < carretera.clientWidth - carroVisual.clientWidth) {
+        const limite = carretera.clientWidth - carroVisual.clientWidth;
+
+        if(this.posicion < limite) {
         this.posicion = this.posicion + this.velocidad;
+
+        if(this.posicion > limite) {
+        this.posicion = limite;
+        }
     }
 }
 
